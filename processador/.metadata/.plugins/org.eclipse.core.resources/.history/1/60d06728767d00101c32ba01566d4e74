@@ -1,0 +1,11 @@
+
+public class Image {
+	public final int id;
+	public final int[] feature_array;
+	
+	public Image(int _id, int[] _feature_array) {
+		id = _id;
+		feature_array = _feature_array;
+	}
+	
+}

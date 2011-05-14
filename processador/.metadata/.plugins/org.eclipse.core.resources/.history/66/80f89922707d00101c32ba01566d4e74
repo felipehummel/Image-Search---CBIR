@@ -1,0 +1,11 @@
+
+public class Image {
+	public final String name;
+	public final int[] feature_array;
+	
+	public Image(String _name, int[] _feature_array) {
+		name = _name;
+		feature_array = _feature_array;
+	}
+	
+}

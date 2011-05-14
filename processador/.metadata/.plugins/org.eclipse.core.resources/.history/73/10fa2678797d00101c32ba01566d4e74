@@ -1,0 +1,7 @@
+package similarities;
+
+import ImageSimilarity;
+
+public class EuclidianDistanceSimilarity implements ImageSimilarity {
+
+}

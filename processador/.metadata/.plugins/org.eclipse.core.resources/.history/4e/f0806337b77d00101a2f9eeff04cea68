@@ -1,0 +1,11 @@
+package similarities;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import processing.ImageScore;
+
+public interface ImageSimilarity {
+	float calculateSimilarity(int[] a, int[] b);
+	void sortResults(List<ImageScore> scores);
+}

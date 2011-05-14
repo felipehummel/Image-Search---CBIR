@@ -1,0 +1,5 @@
+package similarities;
+
+public interface ImageSimilarity {
+	float calculateSimilarity(int[] a, int[] b);
+}

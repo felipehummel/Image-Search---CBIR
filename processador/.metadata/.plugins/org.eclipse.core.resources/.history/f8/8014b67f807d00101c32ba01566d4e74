@@ -1,0 +1,51 @@
+import java.util.concurrent.Callable;
+
+import similarities.ImageSimilarity;
+
+import com.carrotsearch.hppc.IntObjectOpenHashMap;
+
+
+public class ShardProcessor implements Callable<ImageScore[]>{
+	private final int[] query_feature_array;
+	private final int[] keys;
+	private final IntObjectOpenHashMap<int[]> images;
+	private final int start;
+	private final int end;
+	private final ImageSimilarity similarity;
+	/**
+	 * start and end are inclusive 
+	 * @param _query_feature_array
+	 * @param _keys
+	 * @param _start
+	 * @param _end
+	 */
+	public ShardProcessor(int[] _query_feature_array, int _start, int _end, IntObjectOpenHashMap<int[]> _images, ImageSimilarity _similarity) {
+		images = _images;
+		query_feature_array = _query_feature_array;
+		keys = images.keys;
+		start = _start;
+		end = _end;
+		similarity = _similarity;
+	}
+	
+	@Override
+	public ImageScore[] call() throws Exception {
+		int id;
+		int[] feature_array;
+		float score;
+		HitQueue pq = new HitQueue(10, true);
+        ImageScore pqTop = pq.top();
+		for (int i = start; i <= end && i < keys.length; i++) {
+			id = keys[i];
+			feature_array = images.get(id);
+			score = similarity.calculateSimilarity(feature_array, query_feature_array);
+			if (score > pqTop.score) {
+        		pqTop.id = id;
+                pqTop.score = score;
+                pqTop = pq.updateTop();
+        	}
+		}
+		return Processor.getResults(pq);
+	}
+
+}

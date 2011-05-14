@@ -1,0 +1,33 @@
+package similarities;
+
+import java.util.Collections;
+import java.util.List;
+
+import processing.ImageScore;
+
+public class VectorSpaceSimilarity implements ImageSimilarity{
+
+	@Override
+	public float calculateSimilarity(int[] a, int[] b) {
+		// TODO Auto-generated method stub
+		float similarity=(float) 0;
+		float norm_a=(float) 0;
+		float norm_b=(float) 0;
+		for (int i = 0; i < b.length; i++) {
+			
+			similarity = similarity + (float)a[i]*(float)b[i];
+			norm_a = norm_a + (float)a[i]*(float)a[i];
+			norm_b = norm_b + (float)b[i]*(float)b[i];
+		}
+		similarity = (float) ((float)similarity/(float)Math.sqrt(norm_a)*Math.sqrt(norm_b));
+		return similarity;
+		
+	}
+
+	@Override
+	public void sortResults(List<ImageScore> scores) {
+		Collections.sort(scores, ImageScore.SIMILARITY_COMPARATOR)
+	}
+
+
+}

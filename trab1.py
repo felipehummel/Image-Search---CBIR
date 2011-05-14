@@ -1,5 +1,7 @@
 import cv
 import sys
+import math
+from hist import creatHistogram
 
 def partitionImage(image_path, NUM_PARTITIONS=5):
     img = cv.LoadImageM(image_path)
@@ -27,12 +29,51 @@ def partitionImage(image_path, NUM_PARTITIONS=5):
     return partitions
 
 
-def createFilesForPartitionedImageArray(partitions, directory="."):
+def createFilesForPartitionedImageArray(partitions):
     cont = 0
     for img in partitions:
-        cv.SaveImage("./testes/"+str(cont)+".png", img)
+        cv.SaveImage("./segmentos/"+str(cont)+".png", img)
         cont += 1
 
-partitions = partitionImage(sys.argv[1], 3)
-createFilesForPartitionedImageArray(partitions, "./testes")
+#def creatHistogram(partition):
+#    width     = partition.width
+#    height    = partition.height
+##    nchannels = 3                    #COLOCANDO NA MARRA COMO CONSTANTE 3 = RGB
+##    step      = partition.step
+#    fatorG = 4
+#    fatorB = 16
+#    for i in range(0, height):
+#        for j in range(0, width):
+#            r = partition[i, j][0]*4/256
+#            g = partition[i, j][1]*4/256
+#            b = partition[i, j][2]*4/256
+#            r = math.floor(r)
+#            g = math.floor(g)
+#            b = math.floor(b)
+#            cor = int(r + fatorG*g + fatorB*b)
+
+#createFilesForPartitionedImageArray(partitions)
+
+import os
+from array import array
+dirList=os.listdir('/home/felipe/ufam/doutorado/ri/trab1_busca/jpg/')
+output_file = open('output_binary_histograms', 'wb')
+file_lookup_file = open('file_lookup_file', 'w')
+i = 0
+print 'Vai processar ', len(dirList), ' imagens'
+for fname in dirList:
+    partitions = partitionImage('/home/felipe/ufam/doutorado/ri/trab1_busca/jpg/'+fname, 5)
+    hist = []
+    file_lookup_file.write(fname.replace('.jpg', '')+'\n')
+    for part in partitions:
+        hist += creatHistogram(part)
+    int_array = array('i', hist)
+    int_array.byteswap()
+    int_array.tofile(output_file)
+    if i%10 == 0:
+        print i
+    i += 1
+
+output_file.close()
+file_lookup_file.close()
 

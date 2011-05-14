@@ -1,0 +1,21 @@
+public class ImageScore implements Comparable<ImageScore> {
+		public int id;
+		public float score;
+		
+		public ImageScore(int _id, float _score) {
+			id = _id;
+			score = _score;
+		}
+		
+		@Override
+		public String toString() {
+			return id + " : "+score;
+		}
+
+		@Override
+		public int compareTo(ImageScore o) {
+			if (this.score > o.score) return -1;
+			if (this.score < o.score) return +1;
+			return 0;
+		}
+}

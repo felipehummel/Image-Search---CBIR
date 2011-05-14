@@ -1,0 +1,261 @@
+2011-05-12 23:11:12,840 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin - Java properties (ordered by property name):
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.application=org.eclipse.ui.ide.workbench
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.buildId=M20110210-1200
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.commands=-os
+linux
+-ws
+gtk
+-arch
+x86
+-showsplash
+/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.platform_3.6.2.v201102101200/splash.bmp
+-launcher
+/home/felipe/eclipse_helios/eclipse/eclipse
+-name
+Eclipse
+--launcher.library
+/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher.gtk.linux.x86_1.1.2.R36x_v20101019_1345/eclipse_1310.so
+-startup
+/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar
+-vm
+/usr/lib/jvm/java-6-sun-1.6.0.24/jre/bin/../lib/i386/client/libjvm.so
+
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.home.location=file:/home/felipe/eclipse_helios/eclipse/
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.launcher=/home/felipe/eclipse_helios/eclipse/eclipse
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.launcher.name=Eclipse
+2011-05-12 23:11:12,885 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.p2.data.area=@config.dir/../p2/
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.p2.profile=SDKProfile
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.product=org.eclipse.sdk.ide
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.startTime=1305256230424
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.vm=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/bin/../lib/i386/client/libjvm.so
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.vmargs=-Xms40m
+-Xmx384m
+-XX:MaxPermSize=256m
+-Djava.class.path=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar
+
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    equinox.use.ds=true
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    file.encoding=UTF-8
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    file.encoding.pkg=sun.io
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    file.separator=/
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.awt.printerjob=sun.print.PSPrinterJob
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.class.path=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar
+2011-05-12 23:11:12,886 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.class.version=50.0
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.endorsed.dirs=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/endorsed
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.ext.dirs=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/ext:/usr/java/packages/lib/ext
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.home=/usr/lib/jvm/java-6-sun-1.6.0.24/jre
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.io.tmpdir=/tmp
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.library.path=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386/client:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.runtime.name=Java(TM) SE Runtime Environment
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.runtime.version=1.6.0_24-b07
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.specification.name=Java Platform API Specification
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.specification.vendor=Sun Microsystems Inc.
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.specification.version=1.6
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vendor=Sun Microsystems Inc.
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vendor.url=http://java.sun.com/
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi
+2011-05-12 23:11:12,887 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.version=1.6.0_24
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.info=mixed mode, sharing
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.name=Java HotSpot(TM) Client VM
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.specification.name=Java Virtual Machine Specification
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.specification.vendor=Sun Microsystems Inc.
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.specification.version=1.0
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.vendor=Sun Microsystems Inc.
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.version=19.1-b02
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    line.separator=
+
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.equinox.launcher.splash.handle=135112720
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.equinox.launcher.splash.location=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.platform_3.6.2.v201102101200/splash.bmp
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.equinox.simpleconfigurator.configUrl=file:org.eclipse.equinox.simpleconfigurator/bundles.info
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.m2e.log.dir=/home/felipe/ufam/doutorado/ri/trab1_busca/processador/.metadata/.plugins/org.eclipse.m2e.logback.configuration
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.update.reconcile=false
+2011-05-12 23:11:12,888 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.executionenvironment=OSGi/Minimum-1.0,OSGi/Minimum-1.1,OSGi/Minimum-1.2,JRE-1.1,J2SE-1.2,J2SE-1.3,J2SE-1.4,J2SE-1.5,JavaSE-1.6
+2011-05-12 23:11:12,889 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.language=pt
+2011-05-12 23:11:12,889 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.os.name=Linux
+2011-05-12 23:11:12,889 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.os.version=2.6.32
+2011-05-12 23:11:12,889 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.processor=x86
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.system.packages=javax.accessibility,javax.activation,javax.activity,javax.annotation,javax.annotation.processing,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,javax.imageio,javax.imageio.event,javax.imageio.metadata,javax.imageio.plugins.bmp,javax.imageio.plugins.jpeg,javax.imageio.spi,javax.imageio.stream,javax.jws,javax.jws.soap,javax.lang.model,javax.lang.model.element,javax.lang.model.type,javax.lang.model.util,javax.management,javax.management.loading,javax.management.modelmbean,javax.management.monitor,javax.management.openmbean,javax.management.relation,javax.management.remote,javax.management.remote.rmi,javax.management.timer,javax.naming,javax.naming.directory,javax.naming.event,javax.naming.ldap,javax.naming.spi,javax.net,javax.net.ssl,javax.print,javax.print.attribute,javax.print.attribute.standard,javax.print.event,javax.rmi,javax.rmi.CORBA,javax.rmi.ssl,javax.script,javax.security.auth,javax.security.auth.callback,javax.security.auth.kerberos,javax.security.auth.login,javax.security.auth.spi,javax.security.auth.x500,javax.security.cert,javax.security.sasl,javax.sound.midi,javax.sound.midi.spi,javax.sound.sampled,javax.sound.sampled.spi,javax.sql,javax.sql.rowset,javax.sql.rowset.serial,javax.sql.rowset.spi,javax.swing,javax.swing.border,javax.swing.colorchooser,javax.swing.event,javax.swing.filechooser,javax.swing.plaf,javax.swing.plaf.basic,javax.swing.plaf.metal,javax.swing.plaf.multi,javax.swing.plaf.synth,javax.swing.table,javax.swing.text,javax.swing.text.html,javax.swing.text.html.parser,javax.swing.text.rtf,javax.swing.tree,javax.swing.undo,javax.tools,javax.transaction,javax.transaction.xa,javax.xml,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.bind.attachment,javax.xml.bind.helpers,javax.xml.bind.util,javax.xml.crypto,javax.xml.crypto.dom,javax.xml.crypto.dsig,javax.xml.crypto.dsig.dom,javax.xml.crypto.dsig.keyinfo,javax.xml.crypto.dsig.spec,javax.xml.datatype,javax.xml.namespace,javax.xml.parsers,javax.xml.soap,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stax,javax.xml.transform.stream,javax.xml.validation,javax.xml.ws,javax.xml.ws.handler,javax.xml.ws.handler.soap,javax.xml.ws.http,javax.xml.ws.soap,javax.xml.ws.spi,javax.xml.ws.wsaddressing,javax.xml.xpath,org.ietf.jgss,org.omg.CORBA,org.omg.CORBA_2_3,org.omg.CORBA_2_3.portable,org.omg.CORBA.DynAnyPackage,org.omg.CORBA.ORBPackage,org.omg.CORBA.portable,org.omg.CORBA.TypeCodePackage,org.omg.CosNaming,org.omg.CosNaming.NamingContextExtPackage,org.omg.CosNaming.NamingContextPackage,org.omg.Dynamic,org.omg.DynamicAny,org.omg.DynamicAny.DynAnyFactoryPackage,org.omg.DynamicAny.DynAnyPackage,org.omg.IOP,org.omg.IOP.CodecFactoryPackage,org.omg.IOP.CodecPackage,org.omg.Messaging,org.omg.PortableInterceptor,org.omg.PortableInterceptor.ORBInitInfoPackage,org.omg.PortableServer,org.omg.PortableServer.CurrentPackage,org.omg.PortableServer.POAManagerPackage,org.omg.PortableServer.POAPackage,org.omg.PortableServer.portable,org.omg.PortableServer.ServantLocatorPackage,org.omg.SendingContext,org.omg.stub.java.rmi,org.w3c.dom,org.w3c.dom.bootstrap,org.w3c.dom.css,org.w3c.dom.events,org.w3c.dom.html,org.w3c.dom.ls,org.w3c.dom.ranges,org.w3c.dom.stylesheets,org.w3c.dom.traversal,org.w3c.dom.views,org.w3c.dom.xpath,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.vendor=Eclipse
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.version=1.5.0
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.supports.framework.extension=true
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.supports.framework.fragment=true
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.supports.framework.requirebundle=true
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    os.arch=i386
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    os.name=Linux
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    os.version=2.6.32-31-generic
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.arch=x86
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.bundles=reference:file:org.eclipse.equinox.simpleconfigurator_1.0.200.v20100503.jar@1:start
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.bundles.defaultStartLevel=4
+2011-05-12 23:11:12,890 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.bundlestore=/home/felipe/eclipse_helios/eclipse/configuration/org.eclipse.osgi/bundles
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.configuration.area=file:/home/felipe/eclipse_helios/eclipse/configuration/
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework=file:/home/felipe/eclipse_helios/eclipse/plugins/org.eclipse.osgi_3.6.2.R36x_v20110210.jar
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework.extensions=
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework.shape=jar
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework.version=3.6.2.R36x_v20110210
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.install.area=file:/home/felipe/eclipse_helios/eclipse/
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.instance.area=file:/home/felipe/ufam/doutorado/ri/trab1_busca/processador/
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.instance.area.default=file:/home/felipe/workspace/
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.logfile=/home/felipe/ufam/doutorado/ri/trab1_busca/processador/.metadata/.log
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.manifest.cache=/home/felipe/eclipse_helios/eclipse/configuration/org.eclipse.osgi/manifests
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.nl=pt_BR
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.os=linux
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.splashLocation=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.platform_3.6.2.v201102101200/splash.bmp
+2011-05-12 23:11:12,891 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.splashPath=platform:/base/plugins/org.eclipse.platform
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.syspath=/home/felipe/eclipse_helios/eclipse/plugins
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.tracefile=/home/felipe/ufam/doutorado/ri/trab1_busca/processador/.metadata/trace.log
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    osgi.ws=gtk
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    path.separator=:
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.arch.data.model=32
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.boot.class.path=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/classes
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.boot.library.path=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.cpu.endian=little
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.cpu.isalist=
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.desktop=gnome
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.io.unicode.encoding=UnicodeLittle
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.jnu.encoding=UTF-8
+2011-05-12 23:11:12,892 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.management.compiler=HotSpot Client Compiler
+2011-05-12 23:11:12,893 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    sun.os.patch.level=unknown
+2011-05-12 23:11:12,893 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    user.country=BR
+2011-05-12 23:11:12,893 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    user.dir=/home/felipe
+2011-05-12 23:11:12,903 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    user.home=/home/felipe
+2011-05-12 23:11:12,903 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    user.language=pt
+2011-05-12 23:11:12,903 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    user.name=felipe
+2011-05-12 23:11:12,903 [logback configurator timer] INFO  o.e.m.l.configuration.LogPlugin -    user.timezone=America/Manaus
+2011-05-12 23:11:37,827 [Worker-1] INFO  o.e.m.c.u.i.UpdateConfigurationJob - Update started
+2011-05-12 23:11:37,827 [Worker-1] INFO  o.e.m.c.u.i.UpdateConfigurationJob - Update completed: 0 sec
+2011-05-12 23:11:41,116 [Worker-2] INFO  o.e.m.c.i.index.NexusIndexManager - Updating index central|http://repo1.maven.org/maven2
+2011-05-12 23:12:19,139 [ModalContext] INFO  o.e.m.c.i.p.r.ProjectRegistryRefreshJob - Refreshing [/CBIRProcessor/pom.xml]
+2011-05-12 23:14:31,036 [Worker-2] INFO  o.e.m.c.i.index.NexusIndexManager - Updated index for central|http://repo1.maven.org/maven2
+2011-05-13 11:29:56,869 [main] INFO  o.e.m.c.i.p.r.ProjectRegistryRefreshJob - Refreshing [/CBIRProcessor/pom.xml]
+2011-05-13 17:54:53,935 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin - Java properties (ordered by property name):
+2011-05-13 17:54:53,998 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.application=org.eclipse.ui.ide.workbench
+2011-05-13 17:54:53,999 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.buildId=M20110210-1200
+2011-05-13 17:54:53,999 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.commands=-os
+linux
+-ws
+gtk
+-arch
+x86
+-showsplash
+/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.platform_3.6.2.v201102101200/splash.bmp
+-launcher
+/home/felipe/eclipse_helios/eclipse/eclipse
+-name
+Eclipse
+--launcher.library
+/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher.gtk.linux.x86_1.1.2.R36x_v20101019_1345/eclipse_1310.so
+-startup
+/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar
+-launcher
+/home/felipe/eclipse_helios/eclipse/eclipse
+-data
+/home/felipe/ufam/doutorado/ri/trab1_busca/processador
+-launcher
+/home/felipe/eclipse_helios/eclipse/eclipse
+-vm
+/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386/client/libjvm.so
+
+2011-05-13 17:54:53,999 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.home.location=file:/home/felipe/eclipse_helios/eclipse/
+2011-05-13 17:54:53,999 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.launcher=/home/felipe/eclipse_helios/eclipse/eclipse
+2011-05-13 17:54:53,999 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.launcher.name=Eclipse
+2011-05-13 17:54:53,999 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.p2.data.area=@config.dir/../p2/
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.p2.profile=SDKProfile
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.product=org.eclipse.sdk.ide
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.startTime=1305323690934
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.vm=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386/client/libjvm.so
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    eclipse.vmargs=-Xms40m
+-Xmx384m
+-XX:MaxPermSize=256m
+-Djava.class.path=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar
+
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    equinox.use.ds=true
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    file.encoding=UTF-8
+2011-05-13 17:54:54,000 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    file.encoding.pkg=sun.io
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    file.separator=/
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.awt.printerjob=sun.print.PSPrinterJob
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.class.path=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.class.version=50.0
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.endorsed.dirs=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/endorsed
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.ext.dirs=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/ext:/usr/java/packages/lib/ext
+2011-05-13 17:54:54,001 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.home=/usr/lib/jvm/java-6-sun-1.6.0.24/jre
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.io.tmpdir=/tmp
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.library.path=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386/client:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.runtime.name=Java(TM) SE Runtime Environment
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.runtime.version=1.6.0_24-b07
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.specification.name=Java Platform API Specification
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.specification.vendor=Sun Microsystems Inc.
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.specification.version=1.6
+2011-05-13 17:54:54,002 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vendor=Sun Microsystems Inc.
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vendor.url=http://java.sun.com/
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.version=1.6.0_24
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.info=mixed mode, sharing
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.name=Java HotSpot(TM) Client VM
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.specification.name=Java Virtual Machine Specification
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.specification.vendor=Sun Microsystems Inc.
+2011-05-13 17:54:54,003 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.specification.version=1.0
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.vendor=Sun Microsystems Inc.
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    java.vm.version=19.1-b02
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    line.separator=
+
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.equinox.launcher.splash.handle=140226576
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.equinox.launcher.splash.location=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.platform_3.6.2.v201102101200/splash.bmp
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.equinox.simpleconfigurator.configUrl=file:org.eclipse.equinox.simpleconfigurator/bundles.info
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.m2e.log.dir=/home/felipe/ufam/doutorado/ri/trab1_busca/processador/.metadata/.plugins/org.eclipse.m2e.logback.configuration
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.eclipse.update.reconcile=false
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.executionenvironment=OSGi/Minimum-1.0,OSGi/Minimum-1.1,OSGi/Minimum-1.2,JRE-1.1,J2SE-1.2,J2SE-1.3,J2SE-1.4,J2SE-1.5,JavaSE-1.6
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.language=pt
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.os.name=Linux
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.os.version=2.6.32
+2011-05-13 17:54:54,004 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.processor=x86
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.system.packages=javax.accessibility,javax.activation,javax.activity,javax.annotation,javax.annotation.processing,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,javax.imageio,javax.imageio.event,javax.imageio.metadata,javax.imageio.plugins.bmp,javax.imageio.plugins.jpeg,javax.imageio.spi,javax.imageio.stream,javax.jws,javax.jws.soap,javax.lang.model,javax.lang.model.element,javax.lang.model.type,javax.lang.model.util,javax.management,javax.management.loading,javax.management.modelmbean,javax.management.monitor,javax.management.openmbean,javax.management.relation,javax.management.remote,javax.management.remote.rmi,javax.management.timer,javax.naming,javax.naming.directory,javax.naming.event,javax.naming.ldap,javax.naming.spi,javax.net,javax.net.ssl,javax.print,javax.print.attribute,javax.print.attribute.standard,javax.print.event,javax.rmi,javax.rmi.CORBA,javax.rmi.ssl,javax.script,javax.security.auth,javax.security.auth.callback,javax.security.auth.kerberos,javax.security.auth.login,javax.security.auth.spi,javax.security.auth.x500,javax.security.cert,javax.security.sasl,javax.sound.midi,javax.sound.midi.spi,javax.sound.sampled,javax.sound.sampled.spi,javax.sql,javax.sql.rowset,javax.sql.rowset.serial,javax.sql.rowset.spi,javax.swing,javax.swing.border,javax.swing.colorchooser,javax.swing.event,javax.swing.filechooser,javax.swing.plaf,javax.swing.plaf.basic,javax.swing.plaf.metal,javax.swing.plaf.multi,javax.swing.plaf.synth,javax.swing.table,javax.swing.text,javax.swing.text.html,javax.swing.text.html.parser,javax.swing.text.rtf,javax.swing.tree,javax.swing.undo,javax.tools,javax.transaction,javax.transaction.xa,javax.xml,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.bind.attachment,javax.xml.bind.helpers,javax.xml.bind.util,javax.xml.crypto,javax.xml.crypto.dom,javax.xml.crypto.dsig,javax.xml.crypto.dsig.dom,javax.xml.crypto.dsig.keyinfo,javax.xml.crypto.dsig.spec,javax.xml.datatype,javax.xml.namespace,javax.xml.parsers,javax.xml.soap,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stax,javax.xml.transform.stream,javax.xml.validation,javax.xml.ws,javax.xml.ws.handler,javax.xml.ws.handler.soap,javax.xml.ws.http,javax.xml.ws.soap,javax.xml.ws.spi,javax.xml.ws.wsaddressing,javax.xml.xpath,org.ietf.jgss,org.omg.CORBA,org.omg.CORBA_2_3,org.omg.CORBA_2_3.portable,org.omg.CORBA.DynAnyPackage,org.omg.CORBA.ORBPackage,org.omg.CORBA.portable,org.omg.CORBA.TypeCodePackage,org.omg.CosNaming,org.omg.CosNaming.NamingContextExtPackage,org.omg.CosNaming.NamingContextPackage,org.omg.Dynamic,org.omg.DynamicAny,org.omg.DynamicAny.DynAnyFactoryPackage,org.omg.DynamicAny.DynAnyPackage,org.omg.IOP,org.omg.IOP.CodecFactoryPackage,org.omg.IOP.CodecPackage,org.omg.Messaging,org.omg.PortableInterceptor,org.omg.PortableInterceptor.ORBInitInfoPackage,org.omg.PortableServer,org.omg.PortableServer.CurrentPackage,org.omg.PortableServer.POAManagerPackage,org.omg.PortableServer.POAPackage,org.omg.PortableServer.portable,org.omg.PortableServer.ServantLocatorPackage,org.omg.SendingContext,org.omg.stub.java.rmi,org.w3c.dom,org.w3c.dom.bootstrap,org.w3c.dom.css,org.w3c.dom.events,org.w3c.dom.html,org.w3c.dom.ls,org.w3c.dom.ranges,org.w3c.dom.stylesheets,org.w3c.dom.traversal,org.w3c.dom.views,org.w3c.dom.xpath,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.vendor=Eclipse
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.framework.version=1.5.0
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.supports.framework.extension=true
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.supports.framework.fragment=true
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    org.osgi.supports.framework.requirebundle=true
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    os.arch=i386
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    os.name=Linux
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    os.version=2.6.32-31-generic
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.arch=x86
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.bundles=reference:file:org.eclipse.equinox.simpleconfigurator_1.0.200.v20100503.jar@1:start
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.bundles.defaultStartLevel=4
+2011-05-13 17:54:54,005 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.bundlestore=/home/felipe/eclipse_helios/eclipse/configuration/org.eclipse.osgi/bundles
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.configuration.area=file:/home/felipe/eclipse_helios/eclipse/configuration/
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework=file:/home/felipe/eclipse_helios/eclipse/plugins/org.eclipse.osgi_3.6.2.R36x_v20110210.jar
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework.extensions=
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework.shape=jar
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.framework.version=3.6.2.R36x_v20110210
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.install.area=file:/home/felipe/eclipse_helios/eclipse/
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.instance.area=file:/home/felipe/ufam/doutorado/ri/trab1_busca/processador/
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.instance.area.default=file:/home/felipe/workspace/
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.logfile=/home/felipe/ufam/doutorado/ri/trab1_busca/processador/.metadata/.log
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.manifest.cache=/home/felipe/eclipse_helios/eclipse/configuration/org.eclipse.osgi/manifests
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.nl=pt_BR
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.os=linux
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.splashLocation=/home/felipe/eclipse_helios/eclipse//plugins/org.eclipse.platform_3.6.2.v201102101200/splash.bmp
+2011-05-13 17:54:54,006 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.splashPath=platform:/base/plugins/org.eclipse.platform
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.syspath=/home/felipe/eclipse_helios/eclipse/plugins
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.tracefile=/home/felipe/ufam/doutorado/ri/trab1_busca/processador/.metadata/trace.log
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    osgi.ws=gtk
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    path.separator=:
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.arch.data.model=32
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.boot.class.path=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/classes
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.boot.library.path=/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.cpu.endian=little
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.cpu.isalist=
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.desktop=gnome
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.io.unicode.encoding=UnicodeLittle
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.jnu.encoding=UTF-8
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.management.compiler=HotSpot Client Compiler
+2011-05-13 17:54:54,007 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    sun.os.patch.level=unknown
+2011-05-13 17:54:54,008 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    user.country=BR
+2011-05-13 17:54:54,008 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    user.dir=/home/felipe
+2011-05-13 17:54:54,008 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    user.home=/home/felipe
+2011-05-13 17:54:54,008 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    user.language=pt
+2011-05-13 17:54:54,008 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    user.name=felipe
+2011-05-13 17:54:54,008 [Start Level Event Dispatcher] INFO  o.e.m.l.configuration.LogPlugin -    user.timezone=America/Manaus
+2011-05-13 17:58:40,188 [Worker-4] INFO  o.e.m.c.i.index.NexusIndexManager - Updating index central|http://repo1.maven.org/maven2
+2011-05-13 17:59:06,185 [Worker-4] INFO  o.e.m.c.i.index.NexusIndexManager - Updated index for central|http://repo1.maven.org/maven2
+2011-05-13 17:59:09,270 [Worker-3] INFO  o.e.m.c.i.p.r.ProjectRegistryRefreshJob - Refreshing [/CBIRProcessor/pom.xml]

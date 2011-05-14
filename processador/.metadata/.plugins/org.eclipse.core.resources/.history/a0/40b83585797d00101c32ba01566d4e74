@@ -1,0 +1,14 @@
+package similarities;
+
+import ImageSimilarity;
+
+public class EuclidianDistanceSimilarity implements ImageSimilarity {
+	@Override
+	public float calculateSimilarity(int[] a, int[] b) {
+		double distance = 0;
+	    for (int i = 0; i < a.length; i++) {
+	        distance = distance + Math.pow((a[i] - b[i]), 2);
+	    }
+	    return (float) Math.sqrt(distance);
+	}
+}

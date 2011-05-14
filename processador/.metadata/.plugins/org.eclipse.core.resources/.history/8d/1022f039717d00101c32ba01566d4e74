@@ -1,0 +1,9 @@
+class ImageScore {
+		public int id;
+		public float score;
+		
+		public ImageScore(int _id, float _score) {
+			id = _id;
+			score = _score;
+		}
+}

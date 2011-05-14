@@ -1,0 +1,25 @@
+package similarities;
+
+
+public class EuclidianDistanceSimilarity implements ImageSimilarity {
+//	@Override
+//	public final float calculateSimilarity(int[] a, int[] b) {
+//		double distance = 0;
+//	    for (int i = 0; i < a.length; i++) {
+//	        distance = distance + Math.pow((a[i] - b[i]), 2);
+//	    }
+//	    return (float) Math.sqrt(distance);
+//	}
+	
+	@Override
+	public final float calculateSimilarity(int[] a, int[] b) {
+		double distance = 0;
+		int aux;
+	    for (int i = 0; i < a.length; i++) {
+	    	aux = a[i] - b[i];
+	        distance = distance + (aux * aux);
+	        System.out.println(aux * aux);
+	    }
+	    return (float)Math.sqrt(distance);
+	}
+}

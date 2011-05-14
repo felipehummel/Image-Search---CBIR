@@ -1,0 +1,11 @@
+package evaluation;
+
+public class Precision implements Metric {
+
+	@Override
+	public float calculate(boolean[][] evaluations) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

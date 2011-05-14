@@ -1,0 +1,10 @@
+package evaluation;
+
+public class Precision implements Metric {
+
+	@Override
+	public float calculate(boolean[][] evaluations) {
+		
+	}
+
+}

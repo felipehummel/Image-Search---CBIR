@@ -1,0 +1,5 @@
+file_lookup*
+output_*
+backup/
+*.tar*
+jpg/

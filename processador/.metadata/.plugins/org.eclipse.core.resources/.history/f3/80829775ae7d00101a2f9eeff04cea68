@@ -1,0 +1,30 @@
+package similarities;
+
+public class IntersectionSimilarity implements ImageSimilarity {
+
+	@Override
+	public float calculateSimilarity(int[] a, int[] b) {
+		// TODO Auto-generated method stub
+		float similarity=(float) 0;
+		float sum_bottom=(float) 0;
+		for (int i = 0; i < b.length; i++) {
+			if (a[i]>b[i])
+				similarity = similarity + (float)a[i];
+			else
+				similarity = similarity + (float)b[i];
+			sum_bottom = sum_bottom + (float)a[i];
+			
+		}
+		similarity = (float)1 - (float)similarity/(float)sum_bottom;
+		return similarity;
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

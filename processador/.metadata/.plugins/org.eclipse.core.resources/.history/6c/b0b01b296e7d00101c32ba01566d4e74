@@ -1,0 +1,5 @@
+
+public class Image {
+	String name;
+	int[] feature_array;
+}
