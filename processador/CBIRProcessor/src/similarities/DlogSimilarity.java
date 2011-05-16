@@ -1,11 +1,5 @@
 package similarities;
 
-import java.util.Collections;
-import java.util.List;
-
-import processing.ImageScore;
-
-
 public class DlogSimilarity implements ImageSimilarity {
 
 	private int computeLog(int value){
@@ -38,18 +32,19 @@ public class DlogSimilarity implements ImageSimilarity {
 		}
 		return (float)similarity;
 	}
-	@Override
-	public void sortResults(List<ImageScore> scores) {
-		Collections.sort(scores, ImageScore.DISTANCE_COMPARATOR);
-	}
 
 	@Override
-	public boolean getComparisonMeasure() {
+	final public byte getComparisonMeasure() {
 		return ImageSimilarity.DISTANCE_COMPARISON;
 	}
 	
 	@Override
 	public String toString() {
 		return "Dlog";
+	}
+
+	@Override
+	final public boolean isDistanceMeasure() {
+		return true;
 	}
 }

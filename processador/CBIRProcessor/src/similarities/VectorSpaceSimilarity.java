@@ -1,9 +1,5 @@
 package similarities;
 
-import java.util.Collections;
-import java.util.List;
-
-import processing.ImageScore;
 
 public class VectorSpaceSimilarity implements ImageSimilarity{
 
@@ -21,17 +17,17 @@ public class VectorSpaceSimilarity implements ImageSimilarity{
 	}
 
 	@Override
-	public void sortResults(List<ImageScore> scores) {
-		Collections.sort(scores, ImageScore.SIMILARITY_COMPARATOR);
-	}
-
-	@Override
-	public boolean getComparisonMeasure() {
+	final public byte getComparisonMeasure() {
 		return ImageSimilarity.SIMILARITY_COMPARISON;
 	}
 	
 	@Override
 	public String toString() {
 		return "Cosine";
+	}
+
+	@Override
+	final public boolean isDistanceMeasure() {
+		return false;
 	}
 }

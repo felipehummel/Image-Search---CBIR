@@ -13,10 +13,10 @@ public class MeanAveragePrecision implements Metric {
 			for (int i = 1; i < query_relevants.length && i < MAP_N_LIMIT_RETURNED_DOCS; i++) {
 				if (query_relevants[i]) {
 					correct++;
-					current_precision = current_precision + ((float)correct/(float)i);
+					current_precision += ((float)correct/(float)i);
 				}
 			}
-			mean_precision = mean_precision + (current_precision/(float)num_relevants[j]);
+			mean_precision += (current_precision/(float)num_relevants[j]);
 			j++;
 		}
 		return mean_precision / evaluations.length;

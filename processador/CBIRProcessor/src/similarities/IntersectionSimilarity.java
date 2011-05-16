@@ -1,9 +1,5 @@
 package similarities;
 
-import java.util.Collections;
-import java.util.List;
-
-import processing.ImageScore;
 
 public class IntersectionSimilarity implements ImageSimilarity {
 
@@ -26,18 +22,18 @@ public class IntersectionSimilarity implements ImageSimilarity {
 	}
 
 	@Override
-	public void sortResults(List<ImageScore> scores) {
-		Collections.sort(scores, ImageScore.DISTANCE_COMPARATOR);
-	}
-	
-	@Override
-	public boolean getComparisonMeasure() {
+	final public byte getComparisonMeasure() {
 		return ImageSimilarity.DISTANCE_COMPARISON;
 	}
 	
 	@Override
 	public String toString() {
 		return "Histogram Intersection";
+	}
+
+	@Override
+	final public boolean isDistanceMeasure() {
+		return true;
 	}
 
 }

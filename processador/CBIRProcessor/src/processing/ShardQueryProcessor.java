@@ -2,6 +2,10 @@ package processing;
 import java.util.Map.Entry;
 import java.util.concurrent.Callable;
 
+import processing.priorityqueue.DistanceHitQueue;
+import processing.priorityqueue.HitQueue;
+import processing.priorityqueue.SimilarityHitQueue;
+
 
 import similarities.ImageSimilarity;
 
@@ -32,29 +36,29 @@ public class ShardQueryProcessor implements Callable<ImageScore[]>{
 		int id;
 		int[] feature_array;
 		float score;
-		final HitQueue pq = new HitQueue(Processor.TOP_K, true, similarity.getComparisonMeasure());
+		final HitQueue pq;
+		if (similarity.getComparisonMeasure() == ImageSimilarity.DISTANCE_COMPARISON) 
+			pq = new DistanceHitQueue(Processor.TOP_K);
+		else
+			pq = new SimilarityHitQueue(Processor.TOP_K);
+		
         ImageScore pqTop = pq.top();
+        boolean should_insert_in_pq = false;
 		for (int i = start; i < end; i++) {
 			id = images_entries[i].getKey();
 			feature_array = images_entries[i].getValue();
 			score = similarity.calculateSimilarity(feature_array, query_feature_array);
-//			System.out.println(id+ ":"+score);
-			if (similarity.getComparisonMeasure()) {//distancia
-				if (score < pqTop.score) {
-	        		pqTop.id = id;
-	                pqTop.score = score;
-	                pqTop = pq.updateTop();
-				}
-			}
-			else {
-				if (score > pqTop.score) {
-	        		pqTop.id = id;
-	                pqTop.score = score;
-	                pqTop = pq.updateTop();
-				}
+			if (similarity.isDistanceMeasure()) //distancia
+				should_insert_in_pq = score < pqTop.score;
+			else
+				should_insert_in_pq = score > pqTop.score;
+			if (should_insert_in_pq) {
+        		pqTop.id = id;
+                pqTop.score = score;
+                pqTop = pq.updateTop();
 			}
 		}
-		return Processor.getResults(pq);
+		return pq.getResults(Processor.TOP_K);
 	}
 
 }

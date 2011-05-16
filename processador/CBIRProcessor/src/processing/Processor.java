@@ -17,6 +17,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import processing.priorityqueue.DistanceHitQueue;
+import processing.priorityqueue.HitQueue;
+import processing.priorityqueue.SimilarityHitQueue;
 import similarities.DlogSimilarity;
 import similarities.EuclidianDistanceSimilarity;
 import similarities.ImageSimilarity;
@@ -26,20 +29,18 @@ import util.TextFile;
 import evaluation.EvaluatedQuery;
 import evaluation.MeanAveragePrecision;
 import evaluation.Metric;
-import evaluation.Precision;
 
 public class Processor {
 	public static final int HISTOGRAM_SIZE = 64*5*5;
+	public static final int TOP_K = 30;
 	private final HashMap<Integer, int[]> images = new HashMap<Integer, int[]>(104000);
 	private Entry<Integer, int[]>[] image_entries;
-	public static final int TOP_K = 30;
 	private final ExecutorService executor = Executors.newFixedThreadPool(3);
 	
 	@SuppressWarnings("unchecked")
-	public void readData() throws IOException {
-        FileInputStream inFile = null;
-        inFile = new FileInputStream("/home/felipe/ufam/doutorado/ri/trab1_busca/output_binary_histograms");
-        TextFile names_file = new TextFile("/home/felipe/ufam/doutorado/ri/trab1_busca/file_lookup_file");
+	public void readData(String binary_histograms_file, String image_id_lookup_file) throws IOException {
+        final FileInputStream inFile = new FileInputStream(binary_histograms_file);
+        final TextFile names_file = new TextFile(image_id_lookup_file);
         Iterator<String> names_iterator = names_file.iterator();
         FileChannel inChannel = inFile.getChannel();
         int[] ints;
@@ -75,7 +76,6 @@ public class Processor {
 				upper = num_images;
 			else
 				upper = shard_size + lower;
-//			System.out.println(i+ " = ["+lower+", "+upper+"]");
 			ShardQueryProcessor shard = new ShardQueryProcessor(images.get(query_image), lower, upper, image_entries, similarity);
 			Future<ImageScore[]> result = executor.submit(shard);
 			futures.add(result);
@@ -87,8 +87,7 @@ public class Processor {
 		for (int i = 0; i < parallel_rate; i++) 
 			scores.addAll(Arrays.asList(futures.get(i).get()));
 		
-		similarity.sortResults(scores);
-//		Collections.sort(scores);
+		ImageScore.sort(scores, similarity);
 		return scores.toArray(new ImageScore[scores.size()]);
 	}
 	
@@ -97,50 +96,31 @@ public class Processor {
 		int[] feature_array;
 		int[] query_feature_array = images.get(query_image);
 		float score;
-		final HitQueue pq = new HitQueue(TOP_K, true, similarity.getComparisonMeasure());
+		final HitQueue pq;
+		if (similarity.getComparisonMeasure() == ImageSimilarity.DISTANCE_COMPARISON) 
+			pq = new DistanceHitQueue(Processor.TOP_K);
+		else
+			pq = new SimilarityHitQueue(Processor.TOP_K);
         ImageScore pqTop = pq.top();
+        boolean should_insert_in_pq;
 		for (int i = 0; i < image_entries.length; i++) {
 			id = image_entries[i].getKey();
 			feature_array = image_entries[i].getValue();
 			score = similarity.calculateSimilarity(feature_array, query_feature_array);
-			if (similarity.getComparisonMeasure()) {//distancia
-				if (score < pqTop.score) {
-	        		pqTop.id = id;
-	                pqTop.score = score;
-	                pqTop = pq.updateTop();
-				}
+			if (similarity.isDistanceMeasure()) //distancia
+				should_insert_in_pq = score < pqTop.score;
+			else
+				should_insert_in_pq = score > pqTop.score;
+			if (should_insert_in_pq) {
+        		pqTop.id = id;
+                pqTop.score = score;
+                pqTop = pq.updateTop();
 			}
-			else {
-				if (score > pqTop.score) {
-	        		pqTop.id = id;
-	                pqTop.score = score;
-	                pqTop = pq.updateTop();
-				}
-			}
-				
 		}
-		return Processor.getResults(pq);
+		return pq.getResults(TOP_K);
 	}
 	
-	
-	public static ImageScore[] getResults(HitQueue x) {
-		// In case pq was populated with sentinel values, there might be less
-        // results than pq.size(). Therefore return all results until either
-        // pq.size() or totalHits.
-        //totalHits é igual a top_k pq a gente tem certeza que sempre vai ter top_K resultados no heap, ou seja não tem como sobrer objeto sentinel
-        int totalHits = TOP_K; 
-        int size = totalHits < x.size() ? totalHits : x.size();
-        
-        // We know that start < pqsize, so just fix howMany. 
-        int howMany = Math.min(size, TOP_K);
-        ImageScore[] results = new ImageScore[howMany];
-        for (int i = howMany - 1; i >= 0; i--) {
-            results[i] = x.pop();
-        }
-        return results;
-	}
-	
-	private void shutDown() {
+	public void shutDown() {
 		executor.shutdownNow();
 	}
 	
@@ -185,9 +165,9 @@ public class Processor {
 
 	public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
 		Processor proc = new Processor();
-		proc.readData();
+		proc.readData("/home/felipe/ufam/doutorado/ri/trab1_busca/output_binary_histograms", 
+				      "/home/felipe/ufam/doutorado/ri/trab1_busca/file_lookup_file");
 		final int parallel_rate = 2;
-		ImageSimilarity similarity = new VectorSpaceSimilarity();
 		Metric metric = new MeanAveragePrecision();
 		long before = System.currentTimeMillis();
 		proc.evaluateQueries("relevantes", new VectorSpaceSimilarity(), metric, parallel_rate);
@@ -199,6 +179,4 @@ public class Processor {
 		System.out.println("Avaliação demorou: "+(after-before)+ " ms");
 		proc.shutDown();
 	}
-	
-	
 }

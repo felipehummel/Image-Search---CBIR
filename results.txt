@@ -15,10 +15,10 @@ P@30:
     Euclidian Distance: 7.22222%
     Histogram Intersection: 0.222222%
 MAP:
-    Cosine:
-    Dlog:
-    Euclidian Distance:
-    Histogram Intersection:
+    Cosine: 10.467%
+    Dlog: 19.914%
+    Euclidian Distance: 6.9014%
+    Histogram Intersection: 0.2053%
 
 P@1:
     Cosine: 56.6666%
