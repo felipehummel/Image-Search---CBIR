@@ -185,7 +185,7 @@ public class Processor {
 		Processor proc = new Processor();
 		proc.readData();
 		final int parallel_rate = 2;
-		ImageSimilarity similarity = new VectorSpaceSimilarity();
+		ImageSimilarity similarity = new DlogSimilarity();
 		Metric metric = new Precision(10);
 		long before = System.currentTimeMillis();
 		proc.evaluateQueries("relevantes", similarity, metric, parallel_rate);

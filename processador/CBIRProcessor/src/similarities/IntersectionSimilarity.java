@@ -20,15 +20,9 @@ public class IntersectionSimilarity implements ImageSimilarity {
 			sum_bottom = sum_bottom + (float)a[i];
 		}
 		similarity = (float)1 - (float)similarity/(float)sum_bottom;
+		if (similarity < 0) 
+			similarity *= -1;
 		return similarity;
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

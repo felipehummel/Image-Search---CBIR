@@ -1,9 +1,0 @@
-class ImageScore {
-		public final String name;
-		public final float score;
-		
-		public ImageScore(String _name, float _score) {
-			name = _name;
-			score = _score;
-		}
-}

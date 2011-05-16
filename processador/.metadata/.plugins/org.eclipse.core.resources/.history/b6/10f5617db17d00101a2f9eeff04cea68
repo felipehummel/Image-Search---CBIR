@@ -1,5 +1,0 @@
-package evaluation;
-
-public interface Metric {
-
-}

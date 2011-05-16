@@ -3,3 +3,4 @@ output_*
 backup/
 *.tar*
 jpg/
+processador/.metadata

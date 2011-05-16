@@ -1,7 +1,0 @@
-
-public class Image {
-	public final String name;
-	public final int[] feature_array;
-	
-	
-}
