@@ -1,0 +1,64 @@
+Local Color Histogram - 5x5 Partitions:
+P@10:
+    Cosine: 23.333332%
+    Dlog: 35.666%
+    Euclidian Distance: 14.9999%
+    Histogram Intersection: 0.333333%
+P@20:
+    Cosine: 14.66666%
+    Dlog: 24.6666%
+    Euclidian Distance: 9.999999%
+    Histogram Intersection: 0.333333%
+P@30:
+    Cosine: 11.3333%
+    Dlog:   18.2222%
+    Euclidian Distance: 7.22222%
+    Histogram Intersection: 0.222222%
+MAP:
+    Cosine:
+    Dlog:
+    Euclidian Distance:
+    Histogram Intersection:
+
+P@1:
+    Cosine: 56.6666%
+    Dlog: 56.6666%
+    Euclidian Distance: 13.3333%
+    Histogram Intersection: 3.3333%
+
+P@2:
+    Cosine: 46.6666%
+    Dlog: 58.3333%
+    Euclidian Distance: 16.6666%
+    Histogram Intersection: 1.6666%
+
+P@3:
+    Cosine: 37.777%
+    Dlog: 55.555%
+    Euclidian Distance: 15.5555%
+    Histogram Intersection: 1.11111%
+
+P@4:
+    Cosine: 35%
+    Dlog: 50.833%
+    Euclidian Distance: 18.333%
+    Histogram Intersection: 0.8333%
+
+P@5:
+    Cosine:31.333%
+    Dlog: 48%
+    Euclidian Distance: 17.333%
+    Histogram Intersection: 0.6666%
+
+P@15:
+    Cosine: 16.888%
+    Dlog: 28.888%
+    Euclidian Distance: 11.777%
+    Histogram Intersection: 0.4444%
+
+P@25:
+    Cosine: 12.9333%
+    Dlog: 20.666%
+    Euclidian Distance: 8.4%
+    Histogram Intersection: 0.26666%
+

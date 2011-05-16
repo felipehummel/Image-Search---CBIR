@@ -36,4 +36,9 @@ public class EuclidianDistanceSimilarity implements ImageSimilarity {
 	public boolean getComparisonMeasure() {
 		return ImageSimilarity.DISTANCE_COMPARISON;
 	}
+	
+	@Override
+		public String toString() {
+			return "Euclidian Distance";
+		}
 }

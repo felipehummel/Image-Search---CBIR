@@ -6,7 +6,7 @@ public class Precision implements Metric {
 		at = _at;
 	}
 	@Override
-	public float calculate(boolean[][] evaluations) {
+	public float calculate(boolean[][] evaluations, int[] num_relevants) {
 		float precision = 0F;
 		for (int i = 0; i < evaluations.length; i++) {
 			int corrects = countCorrects(evaluations[i], at);

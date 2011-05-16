@@ -29,4 +29,9 @@ public class VectorSpaceSimilarity implements ImageSimilarity{
 	public boolean getComparisonMeasure() {
 		return ImageSimilarity.SIMILARITY_COMPARISON;
 	}
+	
+	@Override
+	public String toString() {
+		return "Cosine";
+	}
 }

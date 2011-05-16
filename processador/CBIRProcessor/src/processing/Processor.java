@@ -7,7 +7,6 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,6 +23,8 @@ import similarities.ImageSimilarity;
 import similarities.IntersectionSimilarity;
 import similarities.VectorSpaceSimilarity;
 import util.TextFile;
+import evaluation.EvaluatedQuery;
+import evaluation.MeanAveragePrecision;
 import evaluation.Metric;
 import evaluation.Precision;
 
@@ -31,7 +32,7 @@ public class Processor {
 	public static final int HISTOGRAM_SIZE = 64*5*5;
 	private final HashMap<Integer, int[]> images = new HashMap<Integer, int[]>(104000);
 	private Entry<Integer, int[]>[] image_entries;
-	public static final int TOP_K = 20;
+	public static final int TOP_K = 30;
 	private final ExecutorService executor = Executors.newFixedThreadPool(3);
 	
 	@SuppressWarnings("unchecked")
@@ -75,7 +76,7 @@ public class Processor {
 			else
 				upper = shard_size + lower;
 //			System.out.println(i+ " = ["+lower+", "+upper+"]");
-			ShardProcessor shard = new ShardProcessor(images.get(query_image), lower, upper, image_entries, similarity);
+			ShardQueryProcessor shard = new ShardQueryProcessor(images.get(query_image), lower, upper, image_entries, similarity);
 			Future<ImageScore[]> result = executor.submit(shard);
 			futures.add(result);
 			lower += shard_size;
@@ -146,19 +147,20 @@ public class Processor {
 	private void evaluateQueries(String relevants_dir, ImageSimilarity similarity, Metric metric, int parallel_rate) throws InterruptedException, ExecutionException {
 		File relDir = new File(relevants_dir);
 		boolean[][] evaluations = new boolean[relDir.list().length][];
+		int[] num_relevants = new int[relDir.list().length];
 		int i = 0;
 		for (String query_file : relDir.list()) {
 			EvaluatedQuery evaluated_query = parseEvaluatedQuery(relevants_dir+"/"+query_file);
-			System.out.println("Querying image_id: "+evaluated_query.query_id);
+			num_relevants[i] = evaluated_query.numberOfRelevants();
 			ImageScore[] results = this.paralellProcessQueryImage(evaluated_query.query_id, similarity, parallel_rate);
-			System.out.println(evaluated_query.relevants);
-			System.out.println(Arrays.toString(results));
-			boolean[] relevance_array = getRelevanceArray(evaluated_query, results);
-			evaluations[i] = relevance_array;
+//			System.out.println("Querying image_id: "+evaluated_query.query_id);
+//			System.out.println(evaluated_query.relevants);
+//			System.out.println(Arrays.toString(results));
+			evaluations[i] = getRelevanceArray(evaluated_query, results);;
 			i++;
 		}
-		float metric_result = metric.calculate(evaluations);
-		System.out.println(metric.resultToString(metric_result));
+		float metric_result = metric.calculate(evaluations, num_relevants);
+		System.out.println("["+similarity.toString()+"]"+metric.resultToString(metric_result));
 	}
 	
 	private boolean[] getRelevanceArray(EvaluatedQuery evaluated_query,	ImageScore[] results) {
@@ -185,45 +187,18 @@ public class Processor {
 		Processor proc = new Processor();
 		proc.readData();
 		final int parallel_rate = 2;
-		ImageSimilarity similarity = new DlogSimilarity();
-		Metric metric = new Precision(10);
+		ImageSimilarity similarity = new VectorSpaceSimilarity();
+		Metric metric = new MeanAveragePrecision();
 		long before = System.currentTimeMillis();
-		proc.evaluateQueries("relevantes", similarity, metric, parallel_rate);
+		proc.evaluateQueries("relevantes", new VectorSpaceSimilarity(), metric, parallel_rate);
+		proc.evaluateQueries("relevantes", new DlogSimilarity(), metric, parallel_rate);
+		proc.evaluateQueries("relevantes", new EuclidianDistanceSimilarity(), metric, parallel_rate);
+		proc.evaluateQueries("relevantes", new IntersectionSimilarity(), metric, parallel_rate);
+		
 		long after = System.currentTimeMillis();
 		System.out.println("Avaliação demorou: "+(after-before)+ " ms");
-		
 		proc.shutDown();
-//			long before = System.currentTimeMillis();
-//			ImageScore[] results = proc.paralellProcessQueryImage(1234, new EuclidianDistanceSimilarity(), 2);
-//			results = proc.paralellProcessQueryImage(1234, new IntersectionSimilarity(), 2);
-//			results = proc.paralellProcessQueryImage(1234, new VectorSpaceSimilarity(), 2);
-//			results = proc.paralellProcessQueryImage(1234, new DlogSimilarity(), 2);
-//			long after = System.currentTimeMillis();
-//			System.out.println((after-before)+ " ms");
-//			System.out.println(Arrays.toString(results));
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		} catch (ExecutionException e) {
-//			e.printStackTrace();
-//		}
-//		finally {
-			
-//		}
 	}
 	
-	private static class EvaluatedQuery {
-		public final int query_id;
-		public final Set<Integer> relevants;
-		
-		public EvaluatedQuery(int _query_id, Set<Integer> _relevants) {
-			relevants = _relevants;
-			query_id = _query_id;
-		}
-
-		public boolean isImageRelevant(int id) {
-			return relevants.contains(id);
-		}
-		
-	}
 	
 }

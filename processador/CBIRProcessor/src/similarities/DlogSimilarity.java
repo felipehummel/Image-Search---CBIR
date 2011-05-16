@@ -47,4 +47,9 @@ public class DlogSimilarity implements ImageSimilarity {
 	public boolean getComparisonMeasure() {
 		return ImageSimilarity.DISTANCE_COMPARISON;
 	}
+	
+	@Override
+	public String toString() {
+		return "Dlog";
+	}
 }

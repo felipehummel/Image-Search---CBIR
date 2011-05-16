@@ -34,5 +34,10 @@ public class IntersectionSimilarity implements ImageSimilarity {
 	public boolean getComparisonMeasure() {
 		return ImageSimilarity.DISTANCE_COMPARISON;
 	}
+	
+	@Override
+	public String toString() {
+		return "Histogram Intersection";
+	}
 
 }
