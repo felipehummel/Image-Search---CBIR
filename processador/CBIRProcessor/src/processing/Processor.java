@@ -124,9 +124,9 @@ public class Processor {
 				upper = num_images;
 			else
 				upper = shard_size + lower;
-			TwoEvidenceShardProcessor shard = new TwoEvidenceShardProcessor(lch_images.get(query_image), edges_images.get(query_image), lower, upper, 
-					                                                        lch_image_entries, edges_image_entries, similarity);
-//			ShardQueryProcessor shard = new ShardQueryProcessor(lch_images.get(query_image), lower, upper, lch_image_entries, similarity);
+//			TwoEvidenceShardProcessor shard = new TwoEvidenceShardProcessor(lch_images.get(query_image), edges_images.get(query_image), lower, upper, 
+//					                                                        lch_image_entries, edges_image_entries, similarity);
+			ShardQueryProcessor shard = new ShardQueryProcessor(lch_images.get(query_image), lower, upper, lch_image_entries, similarity);
 			Future<ImageScore[]> result = executor.submit(shard);
 			futures.add(result);
 			lower += shard_size;
