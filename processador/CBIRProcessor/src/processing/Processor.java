@@ -1,8 +1,11 @@
 package processing;
 
+import static java.lang.System.out;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -10,13 +13,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
 import processing.priorityqueue.DistanceHitQueue;
 import processing.priorityqueue.HitQueue;
 import processing.priorityqueue.SimilarityHitQueue;
@@ -31,43 +34,88 @@ import evaluation.MeanAveragePrecision;
 import evaluation.Metric;
 
 public class Processor {
-	public static final int HISTOGRAM_SIZE = 64*5*5;
+	public static final int LCH_HISTOGRAM_SIZE = 64*5*5;
+	public static final int EDGES_HISTOGRAM_SIZE = 4*5*5;
 	public static final int TOP_K = 30;
-	private final HashMap<Integer, int[]> images = new HashMap<Integer, int[]>(104000);
-	private Entry<Integer, int[]>[] image_entries;
+	private final HashMap<Integer, int[]> lch_images = new HashMap<Integer, int[]>(104000);
+	private Entry<Integer, int[]>[] lch_image_entries;
+	private final HashMap<Integer, int[]> edges_images = new HashMap<Integer, int[]>(104000);
+	private Entry<Integer, int[]>[] edges_image_entries;
 	private final ExecutorService executor = Executors.newFixedThreadPool(3);
 	
+	public Entry<Integer, int[]> getLCHImageEntry(int image_entries_positions) {
+		return lch_image_entries[image_entries_positions];
+	}
+	
+	public Entry<Integer, int[]> getEdgesImageEntry(int image_entries_positions) {
+		return edges_image_entries[image_entries_positions];
+	}
+	
+	public int size() {
+		return lch_image_entries.length;
+	}
+	
 	@SuppressWarnings("unchecked")
-	public void readData(String binary_histograms_file, String image_id_lookup_file) throws IOException {
+	public void readLCHData(String binary_histograms_file, String image_id_lookup_file) throws IOException {
         final FileInputStream inFile = new FileInputStream(binary_histograms_file);
         final TextFile names_file = new TextFile(image_id_lookup_file);
         Iterator<String> names_iterator = names_file.iterator();
         FileChannel inChannel = inFile.getChannel();
+        ByteBuffer buf = ByteBuffer.allocate(LCH_HISTOGRAM_SIZE*4); //*4 pq cada int tem 4 bytes
         int[] ints;
-        ByteBuffer buf = ByteBuffer.allocate(HISTOGRAM_SIZE*4);
         String name;
         int i = 0;
 	    while (inChannel.read(buf) != -1) {
-	    	ints = new int[HISTOGRAM_SIZE];
+	    	ints = new int[LCH_HISTOGRAM_SIZE];
 	    	((ByteBuffer) (buf.flip())).asIntBuffer().get(ints);
 	        buf.clear();
 	        name = names_iterator.next();
-	        images.put(Integer.parseInt(name), ints);
+	        lch_images.put(Integer.parseInt(name), ints);
 	        if (i++%10000==0)
 	        	System.out.println(i);
         }
         inFile.close();
-        image_entries = (Entry<Integer, int[]>[]) new Entry[images.size()]; 
+        lch_image_entries = (Entry<Integer, int[]>[]) new Entry[lch_images.size()]; 
     	i = 0;
-    	for (Entry<Integer, int[]> entry : images.entrySet()) {
-    		image_entries[i] = entry;
+    	for (Entry<Integer, int[]> entry : lch_images.entrySet()) {
+    		lch_image_entries[i] = entry;
 			i++;
 		}
-        System.out.println(images.size()+  " imagens");
+        out.println(lch_images.size()+  " imagens");
 	}
+	
+	@SuppressWarnings("unchecked")
+	public void readEdgesData(String binary_histograms_file, String image_id_lookup_file) throws IOException {
+        final FileInputStream inFile = new FileInputStream(binary_histograms_file);
+        final TextFile names_file = new TextFile(image_id_lookup_file);
+        Iterator<String> names_iterator = names_file.iterator();
+        FileChannel inChannel = inFile.getChannel();
+        ByteBuffer buf = ByteBuffer.allocate(EDGES_HISTOGRAM_SIZE*4); //*4 pq cada int tem 4 bytes
+        int[] ints;
+        String name;
+        int i = 0;
+	    while (inChannel.read(buf) != -1) {
+	    	ints = new int[EDGES_HISTOGRAM_SIZE];
+	    	((ByteBuffer) (buf.flip())).asIntBuffer().get(ints);
+	        buf.clear();
+	        name = names_iterator.next();
+	        edges_images.put(Integer.parseInt(name), ints);
+	        if (i++%10000==0)
+	        	System.out.println(i);
+        }
+        inFile.close();
+        edges_image_entries = (Entry<Integer, int[]>[]) new Entry[edges_images.size()]; 
+    	i = 0;
+    	for (Entry<Integer, int[]> entry : edges_images.entrySet()) {
+    		edges_image_entries[i] = entry;
+			i++;
+		}
+        out.println(edges_images.size()+  " imagens");
+	}
+	
 	public ImageScore[] paralellProcessQueryImage(int query_image, ImageSimilarity similarity, int parallel_rate) throws InterruptedException, ExecutionException {
 		ArrayList<Future<ImageScore[]>> futures = new ArrayList<Future<ImageScore[]>>(parallel_rate);
-		int num_images = images.size();
+		int num_images = lch_images.size();
 		int shard_size = (int)Math.ceil((double)num_images / (double)parallel_rate);
 		int lower = 0;
 		int upper; 
@@ -76,7 +124,9 @@ public class Processor {
 				upper = num_images;
 			else
 				upper = shard_size + lower;
-			ShardQueryProcessor shard = new ShardQueryProcessor(images.get(query_image), lower, upper, image_entries, similarity);
+			TwoEvidenceShardProcessor shard = new TwoEvidenceShardProcessor(lch_images.get(query_image), edges_images.get(query_image), lower, upper, 
+					                                                        lch_image_entries, edges_image_entries, similarity);
+//			ShardQueryProcessor shard = new ShardQueryProcessor(lch_images.get(query_image), lower, upper, lch_image_entries, similarity);
 			Future<ImageScore[]> result = executor.submit(shard);
 			futures.add(result);
 			lower += shard_size;
@@ -94,18 +144,18 @@ public class Processor {
 	public ImageScore[] processQueryImage(int query_image, ImageSimilarity similarity) {
 		int id;
 		int[] feature_array;
-		int[] query_feature_array = images.get(query_image);
+		int[] query_feature_array = lch_images.get(query_image);
 		float score;
 		final HitQueue pq;
 		if (similarity.getComparisonMeasure() == ImageSimilarity.DISTANCE_COMPARISON) 
 			pq = new DistanceHitQueue(Processor.TOP_K);
 		else
 			pq = new SimilarityHitQueue(Processor.TOP_K);
-        ImageScore pqTop = pq.top();
+        ImageScore pqTop = pq.top();	
         boolean should_insert_in_pq;
-		for (int i = 0; i < image_entries.length; i++) {
-			id = image_entries[i].getKey();
-			feature_array = image_entries[i].getValue();
+		for (int i = 0; i < lch_image_entries.length; i++) {
+			id = lch_image_entries[i].getKey();
+			feature_array = lch_image_entries[i].getValue();
 			score = similarity.calculateSimilarity(feature_array, query_feature_array);
 			if (similarity.isDistanceMeasure()) //distancia
 				should_insert_in_pq = score < pqTop.score;
@@ -133,14 +183,11 @@ public class Processor {
 			EvaluatedQuery evaluated_query = parseEvaluatedQuery(relevants_dir+"/"+query_file);
 			num_relevants[i] = evaluated_query.numberOfRelevants();
 			ImageScore[] results = this.paralellProcessQueryImage(evaluated_query.query_id, similarity, parallel_rate);
-//			System.out.println("Querying image_id: "+evaluated_query.query_id);
-//			System.out.println(evaluated_query.relevants);
-//			System.out.println(Arrays.toString(results));
-			evaluations[i] = getRelevanceArray(evaluated_query, results);;
+			evaluations[i] = getRelevanceArray(evaluated_query, results);
 			i++;
 		}
 		float metric_result = metric.calculate(evaluations, num_relevants);
-		System.out.println("["+similarity.toString()+"]"+metric.resultToString(metric_result));
+		out.println("["+similarity.toString()+"]"+metric.resultToString(metric_result));
 	}
 	
 	private boolean[] getRelevanceArray(EvaluatedQuery evaluated_query,	ImageScore[] results) {
@@ -165,8 +212,15 @@ public class Processor {
 
 	public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
 		Processor proc = new Processor();
-		proc.readData("/home/felipe/ufam/doutorado/ri/trab1_busca/output_binary_histograms", 
-				      "/home/felipe/ufam/doutorado/ri/trab1_busca/file_lookup_file");
+		Properties props = new Properties();
+		props.load(new FileInputStream(args[0]));
+		String output_binary_histograms = props.getProperty("binary_histograms_file", "/home/felipe/ufam/doutorado/ri/trab1_busca/output_binary_histograms");
+		String image_id_lookup_file = props.getProperty("image_id_lookup_file", "/home/felipe/ufam/doutorado/ri/trab1_busca/file_lookup_file");
+		String edges_output_binary_histograms = props.getProperty("edges_binary_histograms_file", "/home/felipe/ufam/doutorado/ri/trab1_busca/arestas/output_binary_histograms");
+		String edges_image_id_lookup_file = props.getProperty("edges_image_id_lookup_file", "/home/felipe/ufam/doutorado/ri/trab1_busca/arestas/file_lookup_file");
+		proc.readLCHData(output_binary_histograms, image_id_lookup_file);
+		proc.readEdgesData(edges_output_binary_histograms, edges_image_id_lookup_file);
+		
 		final int parallel_rate = 2;
 		Metric metric = new MeanAveragePrecision();
 		long before = System.currentTimeMillis();
@@ -174,7 +228,6 @@ public class Processor {
 		proc.evaluateQueries("relevantes", new DlogSimilarity(), metric, parallel_rate);
 		proc.evaluateQueries("relevantes", new EuclidianDistanceSimilarity(), metric, parallel_rate);
 		proc.evaluateQueries("relevantes", new IntersectionSimilarity(), metric, parallel_rate);
-		
 		long after = System.currentTimeMillis();
 		System.out.println("Avaliação demorou: "+(after-before)+ " ms");
 		proc.shutDown();

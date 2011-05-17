@@ -1,0 +1,17 @@
+Computador Hummel
+    Cosine:
+        1: 2019 ms
+        2: 1121 ms
+    Euclidian:
+        1: 512 ms
+        2: 307 ms
+    Intersection:
+        1: 653 ms
+        2: 385 ms
+    Dlog:
+        1: 2466 ms
+        2: 1374 ms
+    Dlog (pós-otimização):
+        1: 1463 ms
+        2: 768 ms
+

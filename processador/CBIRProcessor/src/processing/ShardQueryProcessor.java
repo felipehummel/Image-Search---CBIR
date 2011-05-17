@@ -10,7 +10,7 @@ import processing.priorityqueue.SimilarityHitQueue;
 import similarities.ImageSimilarity;
 
 
-public class ShardQueryProcessor implements Callable<ImageScore[]>{
+public class ShardQueryProcessor implements Callable<ImageScore[]> {
 	private final int[] query_feature_array;
 	private final Entry<Integer, int[]>[] images_entries;
 	private final int start;
@@ -60,5 +60,4 @@ public class ShardQueryProcessor implements Callable<ImageScore[]>{
 		}
 		return pq.getResults(Processor.TOP_K);
 	}
-
 }
