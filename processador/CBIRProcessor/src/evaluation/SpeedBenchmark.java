@@ -36,11 +36,12 @@ public class SpeedBenchmark {
 			int dataset_size = proc.size();
 			long accumulated_time = 0;
 			long before, after;
-			for (int parallel_rate = 1; parallel_rate <= 8; parallel_rate++) {
+			for (int parallel_rate = 1; parallel_rate <= 24; parallel_rate++) {
 				for (int i = 0; i < num_queries; i++) {
 					Entry<Integer, int[]> entry = proc.getLCHImageEntry(rand.nextInt(dataset_size));
+					int query_id = entry.getKey();
 					before = System.currentTimeMillis();
-					proc.paralellProcessQueryImage(entry.getKey(), similarity, parallel_rate);
+					proc.parallelProcessQueryImage(query_id, similarity, parallel_rate);
 					after = System.currentTimeMillis();
 					accumulated_time += (after-before);
 				}

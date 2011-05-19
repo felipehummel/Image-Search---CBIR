@@ -1,25 +1,24 @@
 package processing;
 
 import static java.lang.System.out;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Properties;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 import processing.priorityqueue.DistanceHitQueue;
 import processing.priorityqueue.HitQueue;
 import processing.priorityqueue.SimilarityHitQueue;
@@ -32,6 +31,7 @@ import util.TextFile;
 import evaluation.EvaluatedQuery;
 import evaluation.MeanAveragePrecision;
 import evaluation.Metric;
+import evaluation.Precision;
 
 public class Processor {
 	public static final int LCH_HISTOGRAM_SIZE = 64*5*5;
@@ -41,7 +41,7 @@ public class Processor {
 	private Entry<Integer, int[]>[] lch_image_entries;
 	private final HashMap<Integer, int[]> edges_images = new HashMap<Integer, int[]>(104000);
 	private Entry<Integer, int[]>[] edges_image_entries;
-	private final ExecutorService executor = Executors.newFixedThreadPool(3);
+	private final ExecutorService executor = Executors.newFixedThreadPool(24);
 	
 	public Entry<Integer, int[]> getLCHImageEntry(int image_entries_positions) {
 		return lch_image_entries[image_entries_positions];
@@ -113,12 +113,43 @@ public class Processor {
         out.println(edges_images.size()+  " imagens");
 	}
 	
-	public ImageScore[] paralellProcessQueryImage(int query_image, ImageSimilarity similarity, int parallel_rate) throws InterruptedException, ExecutionException {
-		ArrayList<Future<ImageScore[]>> futures = new ArrayList<Future<ImageScore[]>>(parallel_rate);
+	public ImageScore[] parallelProcessQueryImageEdgesOnly(int query_image, ImageSimilarity similarity, int parallel_rate) throws InterruptedException, ExecutionException {
+		Future<ImageScore[]>[] futures = (Future<ImageScore[]>[]) new Future[parallel_rate];
+		int num_images = edges_images.size();
+		int shard_size = (int)Math.ceil((double)num_images / (double)parallel_rate);
+		int lower = 0;
+		int upper;
+		ShardQueryProcessor shard;
+		for (int i = 0; i < parallel_rate; i++) {
+			if (shard_size + lower >= num_images)
+				upper = num_images;
+			else
+				upper = shard_size + lower;
+			shard = new ShardQueryProcessor(edges_images.get(query_image), lower, upper, edges_image_entries, similarity);
+			futures[i] = executor.submit(shard);
+			lower += shard_size;
+		}
+		if (parallel_rate == 1)
+			return futures[0].get();
+		
+		ArrayList<ImageScore> scores = new ArrayList<ImageScore>(100);
+		for (int i = 0; i < parallel_rate; i++) {
+			ImageScore[] x = futures[i].get();
+			for (int j = 0; j < x.length; j++) 
+				scores.add(x[j]);
+		}
+		ImageScore.sort(scores, similarity);
+		return scores.toArray(new ImageScore[scores.size()]);	
+	}
+	
+	public ImageScore[] parallelProcessQueryImage(int query_image, ImageSimilarity similarity, int parallel_rate) throws InterruptedException, ExecutionException {
+		@SuppressWarnings("unchecked")
+		Future<ImageScore[]>[] futures = (Future<ImageScore[]>[]) new Future[parallel_rate];
 		int num_images = lch_images.size();
 		int shard_size = (int)Math.ceil((double)num_images / (double)parallel_rate);
 		int lower = 0;
-		int upper; 
+		int upper;
+		ShardQueryProcessor shard;
 		for (int i = 0; i < parallel_rate; i++) {
 			if (shard_size + lower >= num_images)
 				upper = num_images;
@@ -126,17 +157,19 @@ public class Processor {
 				upper = shard_size + lower;
 //			TwoEvidenceShardProcessor shard = new TwoEvidenceShardProcessor(lch_images.get(query_image), edges_images.get(query_image), lower, upper, 
 //					                                                        lch_image_entries, edges_image_entries, similarity);
-			ShardQueryProcessor shard = new ShardQueryProcessor(lch_images.get(query_image), lower, upper, lch_image_entries, similarity);
-			Future<ImageScore[]> result = executor.submit(shard);
-			futures.add(result);
+			shard = new ShardQueryProcessor(lch_images.get(query_image), lower, upper, lch_image_entries, similarity);
+			futures[i] = executor.submit(shard);
 			lower += shard_size;
 		}
 		if (parallel_rate == 1)
-			return futures.get(0).get();
-		ArrayList<ImageScore> scores = new ArrayList<ImageScore>(100);
-		for (int i = 0; i < parallel_rate; i++) 
-			scores.addAll(Arrays.asList(futures.get(i).get()));
+			return futures[0].get();
 		
+		ArrayList<ImageScore> scores = new ArrayList<ImageScore>(100);
+		for (int i = 0; i < parallel_rate; i++) {
+			ImageScore[] x = futures[i].get();
+			for (int j = 0; j < x.length; j++) 
+				scores.add(x[j]);
+		}
 		ImageScore.sort(scores, similarity);
 		return scores.toArray(new ImageScore[scores.size()]);
 	}
@@ -182,7 +215,7 @@ public class Processor {
 		for (String query_file : relDir.list()) {
 			EvaluatedQuery evaluated_query = parseEvaluatedQuery(relevants_dir+"/"+query_file);
 			num_relevants[i] = evaluated_query.numberOfRelevants();
-			ImageScore[] results = this.paralellProcessQueryImage(evaluated_query.query_id, similarity, parallel_rate);
+			ImageScore[] results = this.parallelProcessQueryImage(evaluated_query.query_id, similarity, parallel_rate);
 			evaluations[i] = getRelevanceArray(evaluated_query, results);
 			i++;
 		}
@@ -222,14 +255,14 @@ public class Processor {
 		proc.readEdgesData(edges_output_binary_histograms, edges_image_id_lookup_file);
 		
 		final int parallel_rate = 2;
-		Metric metric = new MeanAveragePrecision();
+		TwoEvidenceShardProcessor.FIRST_FEATURE_WEIGHT = 0F;
+		TwoEvidenceShardProcessor.SECOND_FEATURE_WEIGHT = 1F;
 		long before = System.currentTimeMillis();
-		proc.evaluateQueries("relevantes", new VectorSpaceSimilarity(), metric, parallel_rate);
-		proc.evaluateQueries("relevantes", new DlogSimilarity(), metric, parallel_rate);
-		proc.evaluateQueries("relevantes", new EuclidianDistanceSimilarity(), metric, parallel_rate);
-		proc.evaluateQueries("relevantes", new IntersectionSimilarity(), metric, parallel_rate);
+		
+		
 		long after = System.currentTimeMillis();
 		System.out.println("Avaliação demorou: "+(after-before)+ " ms");
 		proc.shutDown();
 	}
 }
+
