@@ -3,15 +3,14 @@ package processing;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 import similarities.DlogSimilarity;
-import similarities.EuclidianDistanceSimilarity;
 import similarities.ImageSimilarity;
-import similarities.IntersectionSimilarity;
-import similarities.VectorSpaceSimilarity;
+import util.TextFile;
 
 public class ProcessadorEdges {
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ExecutionException {
@@ -27,10 +26,13 @@ public class ProcessadorEdges {
 //		similarity = new VectorSpaceSimilarity();
 //		similarity = new EuclidianDistanceSimilarity();
 //		similarity = new IntersectionSimilarity();
-		
-		int[] queries = new int[]{100, 200, 300, 5123, 1235};
-		for (int i = 0; i < queries.length; i++) {
-			ImageScore[] results = proc.parallelProcessQueryImageEdgesOnly(queries[i], similarity, 1);
+		TextFile queries_file = new TextFile("queries.txt");
+		ArrayList<Integer> queries_ids = new ArrayList<Integer>();
+		for (String str : queries_file) {
+			queries_ids.add(Integer.parseInt(str));
+		}
+		for (int i = 0; i < queries_ids.size(); i++) {
+			ImageScore[] results = proc.parallelProcessQueryImageRoupas(queries_ids.size(), similarity, 1);
 			Arrays.toString(results);	
 		}
 		

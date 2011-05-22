@@ -41,6 +41,7 @@ public class Processor {
 	private Entry<Integer, int[]>[] lch_image_entries;
 	private final HashMap<Integer, int[]> edges_images = new HashMap<Integer, int[]>(104000);
 	private Entry<Integer, int[]>[] edges_image_entries;
+	
 	private final ExecutorService executor = Executors.newFixedThreadPool(24);
 	
 	public Entry<Integer, int[]> getLCHImageEntry(int image_entries_positions) {
@@ -113,7 +114,7 @@ public class Processor {
         out.println(edges_images.size()+  " imagens");
 	}
 	
-	public ImageScore[] parallelProcessQueryImageEdgesOnly(int query_image, ImageSimilarity similarity, int parallel_rate) throws InterruptedException, ExecutionException {
+	public ImageScore[] parallelProcessQueryImageRoupas(int query_image, ImageSimilarity similarity, int parallel_rate) throws InterruptedException, ExecutionException {
 		Future<ImageScore[]>[] futures = (Future<ImageScore[]>[]) new Future[parallel_rate];
 		int num_images = edges_images.size();
 		int shard_size = (int)Math.ceil((double)num_images / (double)parallel_rate);
